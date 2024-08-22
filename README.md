@@ -3,4 +3,4 @@
 ## 🎨 System Design
 
 
-![SystemDesgin](https://github.com/user-attachments/assets/1303f29d-deb1-4dac-aa16-dd495480d04b)
+![SystemDesgin](https://github.com/user-attachments/assets/e5b19836-8bdb-47b3-8fae-1a5c488780fb)
