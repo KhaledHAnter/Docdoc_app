@@ -14,6 +14,7 @@ class DocApp extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       child: MaterialApp(
+        // home: LoginView(),
         debugShowCheckedModeBanner: false,
         title: "Doc Adavanced Flutter",
         theme: ThemeData(
