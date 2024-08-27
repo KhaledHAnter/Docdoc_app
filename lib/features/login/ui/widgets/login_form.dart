@@ -5,7 +5,7 @@ import 'package:omar_ahmed_app/core/helpers/spacing.dart';
 import 'package:omar_ahmed_app/core/helpers/validator_utils/validator_utils.dart';
 import 'package:omar_ahmed_app/core/widgets/app_text_form_feild.dart';
 import 'package:omar_ahmed_app/features/login/logic/login_cubit/login_cubit.dart';
-import 'package:omar_ahmed_app/features/login/ui/widgets/password_validations.dart';
+import 'package:omar_ahmed_app/features/signup/ui/views/widgets/password_validations.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({
@@ -26,28 +26,6 @@ class _LoginFormState extends State<LoginForm> {
   bool hasMinLength = false;
 
   late TextEditingController passwordController;
-
-  @override
-  void initState() {
-    passwordController = context.read<LoginCubit>().passwordController;
-    setupPasswordControllerListeners();
-    super.initState();
-  }
-
-  void setupPasswordControllerListeners() {
-    passwordController.addListener(
-      () {
-        setState(() {
-          hasLowerCase = AppRegex.hasLowerCase(passwordController.text);
-          hasUpperCase = AppRegex.hasUpperCase(passwordController.text);
-          hasSpecialChar =
-              AppRegex.hasSpecialCharacter(passwordController.text);
-          hasNumber = AppRegex.hasNumber(passwordController.text);
-          hasMinLength = AppRegex.hasMinLength(passwordController.text);
-        });
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,22 +56,8 @@ class _LoginFormState extends State<LoginForm> {
               ),
             ),
           ),
-          verticalSpace(24),
-          PasswordValidations(
-            hasLowerCase: hasLowerCase,
-            hasMinLength: hasMinLength,
-            hasNumber: hasNumber,
-            hasSpecialChar: hasSpecialChar,
-            hasUpperCase: hasUpperCase,
-          ),
         ],
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    passwordController.dispose();
-    super.dispose();
   }
 }
