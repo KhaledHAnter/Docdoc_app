@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:omar_ahmed_app/core/helpers/extentions.dart';
 import 'package:omar_ahmed_app/core/helpers/spacing.dart';
+import 'package:omar_ahmed_app/core/routing/routes.dart';
 import 'package:omar_ahmed_app/core/theming/styles.dart';
 import 'package:omar_ahmed_app/core/widgets/app_text_button.dart';
-import 'package:omar_ahmed_app/features/login/data/models/login_request_body.dart';
-import 'package:omar_ahmed_app/features/login/logic/cubit/login_cubit.dart';
+import 'package:omar_ahmed_app/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:omar_ahmed_app/features/login/ui/widgets/auth_navigation_row.dart';
 import 'package:omar_ahmed_app/features/login/ui/widgets/forgot_password_row.dart';
 import 'package:omar_ahmed_app/features/login/ui/widgets/login_bloc_listner.dart';
@@ -57,9 +58,11 @@ class LoginView extends StatelessWidget {
                 const TermsAndConditions(),
                 verticalSpace(24),
                 AuthNavigationRow(
-                  title: "Already have an account yet?",
+                  title: "Don't have an account? ",
                   buttonText: "Sign Up ",
-                  onPressed: () {},
+                  onPressed: () {
+                    context.pushNamed(Routes.signupView);
+                  },
                 ),
                 const LoginBlocListner(),
               ],
@@ -72,12 +75,7 @@ class LoginView extends StatelessWidget {
 
   void validateAndDoLogin(BuildContext context) {
     if (context.read<LoginCubit>().formKey.currentState!.validate()) {
-      context.read<LoginCubit>().emitLoginStates(
-            LoginRequestBody(
-              email: context.read<LoginCubit>().emailController.text,
-              password: context.read<LoginCubit>().passwordController.text,
-            ),
-          );
+      context.read<LoginCubit>().emitLoginStates();
     }
   }
 }

@@ -6,8 +6,8 @@ import 'package:omar_ahmed_app/core/helpers/extentions.dart';
 import 'package:omar_ahmed_app/core/routing/routes.dart';
 import 'package:omar_ahmed_app/core/theming/colors.dart';
 import 'package:omar_ahmed_app/core/theming/styles.dart';
-import 'package:omar_ahmed_app/features/login/logic/cubit/login_cubit.dart';
-import 'package:omar_ahmed_app/features/login/logic/cubit/login_state.dart';
+import 'package:omar_ahmed_app/features/login/logic/login_cubit/login_cubit.dart';
+import 'package:omar_ahmed_app/features/login/logic/login_cubit/login_state.dart';
 
 class LoginBlocListner extends StatelessWidget {
   const LoginBlocListner({super.key});
