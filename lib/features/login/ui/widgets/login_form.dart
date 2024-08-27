@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:omar_ahmed_app/core/helpers/app_regex.dart';
 import 'package:omar_ahmed_app/core/helpers/spacing.dart';
 import 'package:omar_ahmed_app/core/helpers/validator_utils/validator_utils.dart';
 import 'package:omar_ahmed_app/core/widgets/app_text_form_feild.dart';
 import 'package:omar_ahmed_app/features/login/logic/login_cubit/login_cubit.dart';
-import 'package:omar_ahmed_app/features/signup/ui/views/widgets/password_validations.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({
@@ -18,13 +16,6 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   bool isObscure = true;
-
-  bool hasLowerCase = false;
-  bool hasUpperCase = false;
-  bool hasSpecialChar = false;
-  bool hasNumber = false;
-  bool hasMinLength = false;
-
   late TextEditingController passwordController;
 
   @override
