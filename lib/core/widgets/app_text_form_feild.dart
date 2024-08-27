@@ -14,6 +14,8 @@ class AppTextFormFeild extends StatelessWidget {
   final Widget? suffixIcon;
   final TextInputType? keyboardType;
   final Color? fillColor;
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
 
   const AppTextFormFeild({
     super.key,
@@ -27,11 +29,15 @@ class AppTextFormFeild extends StatelessWidget {
     this.suffixIcon,
     this.keyboardType,
     this.fillColor,
+    this.controller,
+    this.validator,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
+      validator: validator,
       keyboardType: keyboardType,
       decoration: InputDecoration(
         fillColor: fillColor ?? ColorsManager.formGray,
@@ -54,6 +60,18 @@ class AppTextFormFeild extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(16),
             ),
+        errorBorder: OutlineInputBorder(
+            borderSide: const BorderSide(
+              color: Colors.red,
+              width: 1.3,
+            ),
+            borderRadius: BorderRadius.circular(16)),
+        focusedErrorBorder: OutlineInputBorder(
+            borderSide: const BorderSide(
+              color: Colors.red,
+              width: 1.3,
+            ),
+            borderRadius: BorderRadius.circular(16)),
         hintStyle: hintStyle ?? Styles.medium14,
         hintText: hintText,
         suffixIcon: suffixIcon,

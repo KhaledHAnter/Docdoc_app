@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:omar_ahmed_app/core/di/dependency_injection.dart';
 import 'package:omar_ahmed_app/core/routing/routes.dart';
+import 'package:omar_ahmed_app/features/home/ui/views/home_view.dart';
+import 'package:omar_ahmed_app/features/login/logic/cubit/login_cubit.dart';
 import 'package:omar_ahmed_app/features/login/ui/login_view.dart';
 import 'package:omar_ahmed_app/features/onboarding/ui/onboarding_view.dart';
 
@@ -15,7 +19,14 @@ class AppRouter {
         );
       case Routes.loginView:
         return MaterialPageRoute(
-          builder: (_) => const LoginView(),
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<LoginCubit>(),
+            child: const LoginView(),
+          ),
+        );
+      case Routes.homeView:
+        return MaterialPageRoute(
+          builder: (_) => const HomeView(),
         );
       default:
         return MaterialPageRoute(
