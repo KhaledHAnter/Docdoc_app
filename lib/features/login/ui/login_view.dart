@@ -1,26 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:omar_ahmed_app/core/helpers/spacing.dart';
 import 'package:omar_ahmed_app/core/theming/styles.dart';
 import 'package:omar_ahmed_app/core/widgets/app_text_button.dart';
+import 'package:omar_ahmed_app/features/login/data/models/login_request_body.dart';
+import 'package:omar_ahmed_app/features/login/logic/cubit/login_cubit.dart';
 import 'package:omar_ahmed_app/features/login/ui/widgets/auth_navigation_row.dart';
 import 'package:omar_ahmed_app/features/login/ui/widgets/forgot_password_row.dart';
+import 'package:omar_ahmed_app/features/login/ui/widgets/login_bloc_listner.dart';
 import 'package:omar_ahmed_app/features/login/ui/widgets/login_form.dart';
 import 'package:omar_ahmed_app/features/login/ui/widgets/login_header.dart';
 import 'package:omar_ahmed_app/features/login/ui/widgets/social_login_icons.dart';
 import 'package:omar_ahmed_app/features/login/ui/widgets/terms_and_conditions.dart';
 
-class LoginView extends StatefulWidget {
+class LoginView extends StatelessWidget {
   const LoginView({super.key});
 
-  @override
-  State<LoginView> createState() => _LoginViewState();
-}
-
-class _LoginViewState extends State<LoginView> {
-  final GlobalKey formKey = GlobalKey<FormState>();
-  bool isObscure = true;
-  bool isChecked = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,27 +29,15 @@ class _LoginViewState extends State<LoginView> {
               children: <Widget>[
                 const LoginHeader(),
                 verticalSpace(36),
-                LoginForm(
-                    formKey: formKey,
-                    isObscure: isObscure,
-                    onTap: () {
-                      setState(() {
-                        isObscure = !isObscure;
-                      });
-                    }),
+                const LoginForm(),
                 verticalSpace(16),
-                ForgotPasswordRow(
-                  isChecked: isChecked,
-                  onChanged: (value) {
-                    setState(() {
-                      isChecked = value!;
-                    });
-                  },
-                ),
+                const ForgotPasswordRow(),
                 verticalSpace(32),
                 AppTextButton(
                   text: "Login",
-                  onPressed: () {},
+                  onPressed: () {
+                    validateAndDoLogin(context);
+                  },
                   textStyle: Styles.semiBold16,
                 ),
                 verticalSpace(46),
@@ -73,14 +57,27 @@ class _LoginViewState extends State<LoginView> {
                 const TermsAndConditions(),
                 verticalSpace(24),
                 AuthNavigationRow(
-                    title: "Already have an account yet?",
-                    buttonText: "Sign Up ",
-                    onPressed: () {})
+                  title: "Already have an account yet?",
+                  buttonText: "Sign Up ",
+                  onPressed: () {},
+                ),
+                const LoginBlocListner(),
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  void validateAndDoLogin(BuildContext context) {
+    if (context.read<LoginCubit>().formKey.currentState!.validate()) {
+      context.read<LoginCubit>().emitLoginStates(
+            LoginRequestBody(
+              email: context.read<LoginCubit>().emailController.text,
+              password: context.read<LoginCubit>().passwordController.text,
+            ),
+          );
+    }
   }
 }

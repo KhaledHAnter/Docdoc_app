@@ -38,6 +38,8 @@ dependencies:
   flutter_svg: ^2.0.10+1
   # For Responsive Design
   flutter_screenutil: ^5.9.3
+  # For Loading Animations
+  loading_animation_widget: ^1.2.1
 
 
 dev_dependencies:

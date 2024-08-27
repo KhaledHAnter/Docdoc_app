@@ -3,11 +3,17 @@ import 'package:omar_ahmed_app/core/helpers/spacing.dart';
 import 'package:omar_ahmed_app/core/theming/colors.dart';
 import 'package:omar_ahmed_app/core/theming/styles.dart';
 
-class ForgotPasswordRow extends StatelessWidget {
-  final void Function(bool?)? onChanged;
-  final bool isChecked;
-  const ForgotPasswordRow({super.key, this.onChanged, required this.isChecked});
+class ForgotPasswordRow extends StatefulWidget {
+  const ForgotPasswordRow({
+    super.key,
+  });
 
+  @override
+  State<ForgotPasswordRow> createState() => _ForgotPasswordRowState();
+}
+
+class _ForgotPasswordRowState extends State<ForgotPasswordRow> {
+  bool isChecked = false;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -17,7 +23,11 @@ class ForgotPasswordRow extends StatelessWidget {
           side: const BorderSide(color: Color(0xffA9B2B9), width: 2),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
           value: isChecked,
-          onChanged: onChanged,
+          onChanged: (value) {
+            setState(() {
+              isChecked = value!;
+            });
+          },
         ),
         horizontalSpace(2),
         Text(
