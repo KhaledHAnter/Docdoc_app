@@ -47,7 +47,7 @@ class PasswordValidations extends StatelessWidget {
         Text(
           text,
           style: Styles.medium14.copyWith(
-            color: hasValidated ? ColorsManager.gray : ColorsManager.darkBlue,
+            color: hasValidated ? Colors.green : ColorsManager.darkBlue,
             decoration: hasValidated ? TextDecoration.lineThrough : null,
             decorationColor: Colors.green,
             decorationThickness: 2,

@@ -4,7 +4,7 @@ import 'package:omar_ahmed_app/core/helpers/app_regex.dart';
 import 'package:omar_ahmed_app/core/helpers/spacing.dart';
 import 'package:omar_ahmed_app/core/helpers/validator_utils/validator_utils.dart';
 import 'package:omar_ahmed_app/core/widgets/app_text_form_feild.dart';
-import 'package:omar_ahmed_app/features/login/logic/cubit/login_cubit.dart';
+import 'package:omar_ahmed_app/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:omar_ahmed_app/features/login/ui/widgets/password_validations.dart';
 
 class LoginForm extends StatefulWidget {
@@ -59,6 +59,7 @@ class _LoginFormState extends State<LoginForm> {
             hintText: "Email",
             validator: ValidatorUtils.validateEmail,
             controller: context.read<LoginCubit>().emailController,
+            keyboardType: TextInputType.emailAddress,
           ),
           verticalSpace(16),
           AppTextFormFeild(
