@@ -4,7 +4,7 @@ import 'package:omar_ahmed_app/core/helpers/app_regex.dart';
 import 'package:omar_ahmed_app/core/helpers/spacing.dart';
 import 'package:omar_ahmed_app/core/helpers/validator_utils/validator_utils.dart';
 import 'package:omar_ahmed_app/core/widgets/app_text_form_feild.dart';
-import 'package:omar_ahmed_app/features/login/ui/widgets/password_validations.dart';
+import 'package:omar_ahmed_app/features/signup/ui/views/widgets/password_validations.dart';
 import 'package:omar_ahmed_app/features/signup/logic/signup_cubit/sign_up_cubit.dart';
 
 class SignupForm extends StatefulWidget {
