@@ -2,7 +2,7 @@ name: omar_ahmed_app
 description: "A new Flutter project."
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+1
+version: 1.0.2+1
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
@@ -40,6 +40,7 @@ dependencies:
   flutter_screenutil: ^5.9.3
   # For Loading Animations
   loading_animation_widget: ^1.2.1
+  firebase_core: ^2.24.2
 
 
 dev_dependencies:
