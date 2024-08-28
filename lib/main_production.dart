@@ -10,8 +10,7 @@ void main() async {
   await ScreenUtil.ensureScreenSize();
 
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    systemNavigationBarColor: Colors.blue,
-    statusBarColor: Colors.red,
+    statusBarColor: Colors.transparent,
   ));
 
   runApp(DocApp(
