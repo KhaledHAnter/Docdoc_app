@@ -65,4 +65,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'flutter-app-distribution-487f2.appspot.com',
     iosBundleId: 'com.example.omarAhmedApp',
   );
+
 }
