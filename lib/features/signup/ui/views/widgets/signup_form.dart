@@ -62,12 +62,14 @@ class _SignupFormState extends State<SignupForm> {
             hintText: 'Phone number',
             validator: ValidatorUtils.validatePhoneNumber,
             controller: context.read<SignupCubit>().phoneController,
+            keyboardType: TextInputType.number,
           ),
           verticalSpace(18),
           AppTextFormFeild(
             hintText: 'Email',
             validator: ValidatorUtils.validateEmail,
             controller: context.read<SignupCubit>().emailController,
+            keyboardType: TextInputType.emailAddress,
           ),
           verticalSpace(18),
           AppTextFormFeild(
