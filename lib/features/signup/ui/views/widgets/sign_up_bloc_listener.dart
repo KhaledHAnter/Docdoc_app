@@ -64,7 +64,7 @@ class SignupBlocListener extends StatelessWidget {
                 disabledForegroundColor: Colors.grey.withOpacity(0.38),
               ),
               onPressed: () {
-                context.pushNamed(Routes.loginView);
+                context.pushNamed(Routes.fillProfileView);
               },
               child: const Text('Continue'),
             ),
