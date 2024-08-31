@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:omar_ahmed_app/core/helpers/extentions.dart';
+import 'package:omar_ahmed_app/core/helpers/show_snackbar.dart';
 import 'package:omar_ahmed_app/core/helpers/spacing.dart';
 import 'package:omar_ahmed_app/core/routing/routes.dart';
 import 'package:omar_ahmed_app/core/theming/colors.dart';
 import 'package:omar_ahmed_app/core/theming/styles.dart';
 import 'package:omar_ahmed_app/core/widgets/app_text_button.dart';
-import 'package:omar_ahmed_app/features/forgot_password/logic/cubit/forgot_password_cubit.dart';
-import 'package:omar_ahmed_app/features/forgot_password/ui/views/widgets/forgot_password_form.dart';
+import 'package:omar_ahmed_app/features/forgot_password/ui/views/forgot_password_view.dart';
+import 'package:omar_ahmed_app/features/otp_verification/ui/views/widgets/otp_square.dart';
 
-class ForgotPasswordView extends StatelessWidget {
-  const ForgotPasswordView({super.key});
+class OtpVerficationView extends StatelessWidget {
+  const OtpVerficationView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,29 +23,31 @@ class ForgotPasswordView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              'Forgot Password',
+              'OTP Verification',
               style: Styles.bold24.copyWith(color: ColorsManager.mainBlue),
             ),
             verticalSpace(8),
             Text(
-              'At our app, we take the security of your information seriously.',
+              'Add a PIN number to make your account more secure and easy to sign in.',
               style: Styles.regular14,
             ),
             verticalSpace(36),
-            const ForgotPasswordForm(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: List.generate(
+                4,
+                (index) => const OTPsquare(),
+              ),
+            ),
             verticalSpace(40),
             const Spacer(),
             AppTextButton(
-              text: "Reset Password",
+              text: "Submit",
               textStyle: Styles.semiBold16,
               onPressed: () {
-                if (context
-                    .read<ForgotPasswordCubit>()
-                    .formKey
-                    .currentState!
-                    .validate()) {
-                  context.pushNamed(Routes.otpVerificationView);
-                }
+                showSnackbar(context, "OTP Verified");
+                context.pushNamedAndRemoveUntil(Routes.loginView,
+                    predicate: (Route<dynamic> route) => false);
               },
             ),
           ],
