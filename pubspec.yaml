@@ -41,7 +41,10 @@ dependencies:
   # For Loading Animations
   loading_animation_widget: ^1.2.1
   # Firebase
-  firebase_core: ^2.24.2
+  firebase_core: ^3.4.0
+  # firebase_storage: ^12.2.0
+  # for picking images from gallery or camera
+  image_picker: ^1.1.2
 
 
 dev_dependencies:

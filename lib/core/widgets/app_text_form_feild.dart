@@ -16,6 +16,8 @@ class AppTextFormFeild extends StatelessWidget {
   final Color? fillColor;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
+  final bool? readOnly;
+  final void Function()? onTap;
 
   const AppTextFormFeild({
     super.key,
@@ -31,6 +33,8 @@ class AppTextFormFeild extends StatelessWidget {
     this.fillColor,
     this.controller,
     this.validator,
+    this.readOnly,
+    this.onTap,
   });
 
   @override
@@ -76,7 +80,9 @@ class AppTextFormFeild extends StatelessWidget {
         hintText: hintText,
         suffixIcon: suffixIcon,
       ),
+      readOnly: readOnly ?? false,
       obscureText: isObscureText,
+      onTap: onTap,
       style: inputTextStyle ??
           Styles.medium14.copyWith(color: ColorsManager.darkBlue),
     );
