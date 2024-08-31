@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:omar_ahmed_app/core/helpers/extentions.dart';
 import 'package:omar_ahmed_app/core/helpers/spacing.dart';
+import 'package:omar_ahmed_app/core/routing/routes.dart';
 import 'package:omar_ahmed_app/core/theming/colors.dart';
 import 'package:omar_ahmed_app/core/theming/styles.dart';
 import 'package:omar_ahmed_app/core/widgets/app_text_button.dart';
@@ -54,7 +55,7 @@ class SignupView extends StatelessWidget {
                       title: "Already have an account? ",
                       buttonText: "Login",
                       onPressed: () {
-                        context.pop();
+                        context.pushNamed(Routes.fillProfileView);
                       },
                     ),
                     const SignupBlocListener(),

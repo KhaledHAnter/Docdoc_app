@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:omar_ahmed_app/core/helpers/extentions.dart';
 import 'package:omar_ahmed_app/core/helpers/show_snackbar.dart';
 import 'package:omar_ahmed_app/core/helpers/spacing.dart';
+import 'package:omar_ahmed_app/core/routing/routes.dart';
 import 'package:omar_ahmed_app/core/theming/colors.dart';
 import 'package:omar_ahmed_app/core/theming/styles.dart';
 import 'package:omar_ahmed_app/core/widgets/app_text_button.dart';
@@ -42,7 +44,9 @@ class FillProfileView extends StatelessWidget {
             AppTextButton(
               text: "Submit",
               textStyle: Styles.semiBold16,
-              onPressed: () {},
+              onPressed: () {
+                context.pushNamed(Routes.localAuthView);
+              },
             ),
           ],
         ),
