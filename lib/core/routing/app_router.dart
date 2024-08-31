@@ -8,6 +8,7 @@ import 'package:omar_ahmed_app/features/home/ui/views/home_view.dart';
 import 'package:omar_ahmed_app/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:omar_ahmed_app/features/login/ui/login_view.dart';
 import 'package:omar_ahmed_app/features/onboarding/ui/onboarding_view.dart';
+import 'package:omar_ahmed_app/features/otp_verification/ui/views/otp_verfication_view.dart';
 import 'package:omar_ahmed_app/features/signup/logic/signup_cubit/sign_up_cubit.dart';
 import 'package:omar_ahmed_app/features/signup/ui/views/signup_view.dart';
 
@@ -40,6 +41,13 @@ class AppRouter {
           builder: (_) => BlocProvider(
             create: (context) => ForgotPasswordCubit(),
             child: const ForgotPasswordView(),
+          ),
+        );
+      case Routes.otpVerificationView:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => ForgotPasswordCubit(),
+            child: const OtpVerficationView(),
           ),
         );
       case Routes.homeView:
