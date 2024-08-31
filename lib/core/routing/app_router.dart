@@ -6,6 +6,7 @@ import 'package:omar_ahmed_app/features/fill_profile/ui/views/fill_profile_view.
 import 'package:omar_ahmed_app/features/forgot_password/logic/cubit/forgot_password_cubit.dart';
 import 'package:omar_ahmed_app/features/forgot_password/ui/views/forgot_password_view.dart';
 import 'package:omar_ahmed_app/features/home/ui/views/home_view.dart';
+import 'package:omar_ahmed_app/features/local_auth/ui/views/local_auth_view.dart';
 import 'package:omar_ahmed_app/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:omar_ahmed_app/features/login/ui/login_view.dart';
 import 'package:omar_ahmed_app/features/onboarding/ui/onboarding_view.dart';
@@ -47,6 +48,10 @@ class AppRouter {
       case Routes.fillProfileView:
         return MaterialPageRoute(
           builder: (_) => const FillProfileView(),
+        );
+      case Routes.localAuthView:
+        return MaterialPageRoute(
+          builder: (_) => const LocalAuthView(),
         );
       case Routes.otpVerificationView:
         return MaterialPageRoute(

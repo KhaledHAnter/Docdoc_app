@@ -2,7 +2,7 @@ name: omar_ahmed_app
 description: "A new Flutter project."
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.4+1
+version: 1.0.5+1
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
@@ -45,6 +45,8 @@ dependencies:
   # firebase_storage: ^12.2.0
   # for picking images from gallery or camera
   image_picker: ^1.1.2
+  # for local authentication with face id & finger print
+  local_auth: ^2.3.0
 
 
 dev_dependencies:

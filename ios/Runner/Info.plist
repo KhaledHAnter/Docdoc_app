@@ -8,6 +8,10 @@
 		<string>This app require access for photo library usage</string>
 		<key>NSCameraUsageDescription</key>
 		<string>This app require access to the camera</string>
+		<key>NSFaceIDUsageDescription</key>
+		<string>Use Face ID for authentication</string>
+		<key>NSBiometricUsageDescription</key>
+		<string>Use biometrics for authentication</string>
 		<key>CFBundleDevelopmentRegion</key>
 		<string>$(DEVELOPMENT_LANGUAGE)</string>
 		<key>CFBundleDisplayName</key>
