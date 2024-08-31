@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:omar_ahmed_app/core/di/dependency_injection.dart';
 import 'package:omar_ahmed_app/core/routing/routes.dart';
+import 'package:omar_ahmed_app/features/fill_profile/ui/views/fill_profile_view.dart';
 import 'package:omar_ahmed_app/features/forgot_password/logic/cubit/forgot_password_cubit.dart';
 import 'package:omar_ahmed_app/features/forgot_password/ui/views/forgot_password_view.dart';
 import 'package:omar_ahmed_app/features/home/ui/views/home_view.dart';
@@ -42,6 +43,10 @@ class AppRouter {
             create: (context) => ForgotPasswordCubit(),
             child: const ForgotPasswordView(),
           ),
+        );
+      case Routes.fillProfileView:
+        return MaterialPageRoute(
+          builder: (_) => const FillProfileView(),
         );
       case Routes.otpVerificationView:
         return MaterialPageRoute(
