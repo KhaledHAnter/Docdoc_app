@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:omar_ahmed_app/core/di/dependency_injection.dart';
 import 'package:omar_ahmed_app/core/routing/routes.dart';
+import 'package:omar_ahmed_app/features/forgot_password/logic/cubit/forgot_password_cubit.dart';
+import 'package:omar_ahmed_app/features/forgot_password/ui/views/forgot_password_view.dart';
 import 'package:omar_ahmed_app/features/home/ui/views/home_view.dart';
 import 'package:omar_ahmed_app/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:omar_ahmed_app/features/login/ui/login_view.dart';
@@ -31,6 +33,13 @@ class AppRouter {
           builder: (_) => BlocProvider(
             create: (context) => getIt<SignupCubit>(),
             child: const SignupView(),
+          ),
+        );
+      case Routes.forgotPasswordView:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => ForgotPasswordCubit(),
+            child: const ForgotPasswordView(),
           ),
         );
       case Routes.homeView:
