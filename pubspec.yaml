@@ -47,7 +47,13 @@ dependencies:
   image_picker: ^1.1.2
   # for local authentication with face id & finger print
   local_auth: ^2.3.0
+  # for change app icon
+  flutter_launcher_icons: ^0.13.1
 
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/app_icon.png"
 
 dev_dependencies:
   flutter_test:
