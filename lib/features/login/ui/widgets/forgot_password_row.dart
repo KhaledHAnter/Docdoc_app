@@ -4,7 +4,6 @@ import 'package:omar_ahmed_app/core/helpers/spacing.dart';
 import 'package:omar_ahmed_app/core/routing/routes.dart';
 import 'package:omar_ahmed_app/core/theming/colors.dart';
 import 'package:omar_ahmed_app/core/theming/styles.dart';
-import 'package:omar_ahmed_app/features/forgot_password/ui/views/forgot_password_view.dart';
 
 class ForgotPasswordRow extends StatefulWidget {
   const ForgotPasswordRow({

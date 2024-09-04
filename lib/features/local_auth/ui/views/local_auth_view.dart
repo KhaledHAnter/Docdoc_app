@@ -1,12 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:local_auth/local_auth.dart';
 import 'package:omar_ahmed_app/core/helpers/assets.dart';
 import 'package:omar_ahmed_app/core/helpers/extentions.dart';
+import 'package:omar_ahmed_app/core/helpers/local_auth_utils.dart';
 import 'package:omar_ahmed_app/core/helpers/spacing.dart';
 import 'package:omar_ahmed_app/core/routing/routes.dart';
 import 'package:omar_ahmed_app/core/theming/colors.dart';
@@ -21,49 +20,29 @@ class LocalAuthView extends StatefulWidget {
 }
 
 class _LocalAuthViewState extends State<LocalAuthView> {
-  late final LocalAuthentication auth;
+  late final LocalAuthUtils auth;
   bool _canCheckBiometrics = false;
 
   @override
   void initState() {
     super.initState();
-    // _checkBiometrics();
-    auth = LocalAuthentication();
+    auth = LocalAuthUtils();
     _checkBiometrics();
-    // _getAvailableBiometrics();
   }
 
   Future<void> _checkBiometrics() async {
-    auth.isDeviceSupported().then(
-          (bool isSupported) => setState(() {
-            _canCheckBiometrics = isSupported;
-          }),
-        );
+    bool canCheck = await auth.canCheckBiometrics();
+    setState(() {
+      _canCheckBiometrics = canCheck;
+    });
   }
 
-  // Future<void> _getAvailableBiometrics() async {
-  //   List<BiometricType> availableBiometrics =
-  //       await auth.getAvailableBiometrics();
-  //   // print("availableBiometrics $availableBiometrics");
-  //   if (!mounted) {
-  //     return;
-  //   }
-  // }
-
   Future<void> _authenticate() async {
-    try {
-      bool authenticated = await auth.authenticate(
-          localizedReason: "Scan your fingerprint to authenticate",
-          options: const AuthenticationOptions(
-            stickyAuth: true,
-            biometricOnly: true,
-          ));
+    bool authenticated = await auth.authenticate();
+    navigateOptions(authenticated);
+  }
 
-      // print("authenticated $authenticated");
-    } on PlatformException catch (e) {
-      print("error -> $e");
-    }
-    if (!mounted) return;
+  void navigateOptions(bool authenticated) {
     context.pushNamedAndRemoveUntil(Routes.homeView,
         predicate: (context) => false);
   }
