@@ -2,6 +2,10 @@
 class Assets {
   Assets._();
   
+  /// Assets for imagesAppIcon
+  /// assets/images/app_icon.png
+  static const String imagesAppIcon = "assets/images/app_icon.png";
+
   /// Assets for imagesApple
   /// assets/images/apple.svg
   static const String imagesApple = "assets/images/apple.svg";
@@ -33,6 +37,10 @@ class Assets {
   /// Assets for imagesLogo
   /// assets/images/logo.svg
   static const String imagesLogo = "assets/images/logo.svg";
+
+  /// Assets for imagesNotification
+  /// assets/images/notification.svg
+  static const String imagesNotification = "assets/images/notification.svg";
 
   /// Assets for imagesOnboardingLogo
   /// assets/images/onboardingLogo.svg

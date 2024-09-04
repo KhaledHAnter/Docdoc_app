@@ -19,6 +19,11 @@ class Styles {
     fontWeight: FontWeightsHelper.bold,
     color: ColorsManager.mainBlue,
   );
+  static TextStyle bold18 = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeightsHelper.bold,
+    color: ColorsManager.darkBlue,
+  );
   static TextStyle semiBold16 = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeightsHelper.semiBold,
@@ -53,5 +58,10 @@ class Styles {
     fontSize: 12.sp,
     fontWeight: FontWeightsHelper.regular,
     color: const Color(0xff9E9E9E),
+  );
+  static TextStyle regular11 = TextStyle(
+    fontSize: 11.sp,
+    fontWeight: FontWeightsHelper.regular,
+    color: const Color(0xff616161),
   );
 }
