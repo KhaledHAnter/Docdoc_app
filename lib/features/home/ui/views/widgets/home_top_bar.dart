@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:omar_ahmed_app/core/helpers/assets.dart';
 import 'package:omar_ahmed_app/core/theming/colors.dart';
 import 'package:omar_ahmed_app/core/theming/styles.dart';
-import 'package:omar_ahmed_app/features/home/ui/views/widgets/red_notifier.dart';
+import 'package:omar_ahmed_app/core/widgets/red_notifier.dart';
 
 class HomeTopBar extends StatelessWidget {
   const HomeTopBar({super.key});

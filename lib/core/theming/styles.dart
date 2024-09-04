@@ -19,6 +19,11 @@ class Styles {
     fontWeight: FontWeightsHelper.bold,
     color: ColorsManager.mainBlue,
   );
+  static TextStyle medium18 = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeightsHelper.medium,
+    color: Colors.white,
+  );
   static TextStyle bold18 = TextStyle(
     fontSize: 18.sp,
     fontWeight: FontWeightsHelper.bold,
