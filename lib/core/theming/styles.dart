@@ -19,6 +19,26 @@ class Styles {
     fontWeight: FontWeightsHelper.bold,
     color: ColorsManager.mainBlue,
   );
+  static TextStyle medium18 = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeightsHelper.medium,
+    color: Colors.white,
+  );
+  static TextStyle semiBold18 = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeightsHelper.semiBold,
+    color: const Color(0xff242424),
+  );
+  static TextStyle bold18 = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeightsHelper.bold,
+    color: ColorsManager.darkBlue,
+  );
+  static TextStyle bold16 = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeightsHelper.bold,
+    color: ColorsManager.darkBlue,
+  );
   static TextStyle semiBold16 = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeightsHelper.semiBold,
@@ -44,6 +64,11 @@ class Styles {
     fontWeight: FontWeightsHelper.semiBold,
     color: ColorsManager.mainBlue,
   );
+  static TextStyle medium13 = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeightsHelper.medium,
+    color: ColorsManager.gray,
+  );
   static TextStyle regular13 = TextStyle(
     fontSize: 13.sp,
     fontWeight: FontWeightsHelper.regular,
@@ -53,5 +78,10 @@ class Styles {
     fontSize: 12.sp,
     fontWeight: FontWeightsHelper.regular,
     color: const Color(0xff9E9E9E),
+  );
+  static TextStyle regular11 = TextStyle(
+    fontSize: 11.sp,
+    fontWeight: FontWeightsHelper.regular,
+    color: const Color(0xff616161),
   );
 }
