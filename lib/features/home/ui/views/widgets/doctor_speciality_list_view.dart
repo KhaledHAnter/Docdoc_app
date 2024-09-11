@@ -1,38 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:omar_ahmed_app/core/helpers/spacing.dart';
-import 'package:omar_ahmed_app/core/theming/styles.dart';
-import 'package:omar_ahmed_app/features/home/data/doctor_speciality_model.dart';
+import 'package:omar_ahmed_app/features/home/data/models/speceialization_response_model.dart';
+import 'package:omar_ahmed_app/features/home/ui/views/widgets/doctor_speciality_list_view_item.dart';
 
 class DoctorSpecialityListView extends StatelessWidget {
-  const DoctorSpecialityListView({super.key});
+  final List<SpecializationsData> specializationsDataList;
+  const DoctorSpecialityListView(
+      {super.key, required this.specializationsDataList});
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: List.generate(
-        doctorSpecialityList.length,
-        (index) {
-          return Column(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(16),
-                decoration: const BoxDecoration(
-                  color: Color(0xffF4F8FF),
-                  shape: BoxShape.circle,
-                ),
-                child: Image.asset(
-                  doctorSpecialityList[index].image,
-                  height: 24.h,
-                  width: 24.w,
-                ),
-              ),
-              verticalSpace(12),
-              Text(doctorSpecialityList[index].title,
-                  style: Styles.regular12
-                      .copyWith(color: const Color(0xff151515))),
-            ],
+    return SizedBox(
+      height: 100.h,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: specializationsDataList.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: EdgeInsets.only(right: 16.w),
+            child: DoctorSpecialityListViewItem(
+              specializationsData: specializationsDataList[index],
+            ),
           );
         },
       ),

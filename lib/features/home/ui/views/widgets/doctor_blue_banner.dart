@@ -21,8 +21,8 @@ class DoctorBlueBanner extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(24.r),
               image: const DecorationImage(
-                image: AssetImage(Assets.imagesBannerBackgroun),
-              ),
+                  image: AssetImage(Assets.imagesBannerBackgroun),
+                  fit: BoxFit.fitWidth),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
