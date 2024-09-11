@@ -5,6 +5,8 @@ import 'package:omar_ahmed_app/core/routing/routes.dart';
 import 'package:omar_ahmed_app/features/fill_profile/ui/views/fill_profile_view.dart';
 import 'package:omar_ahmed_app/features/forgot_password/logic/cubit/forgot_password_cubit.dart';
 import 'package:omar_ahmed_app/features/forgot_password/ui/views/forgot_password_view.dart';
+import 'package:omar_ahmed_app/features/home/data/repos/home_repo.dart';
+import 'package:omar_ahmed_app/features/home/logic/home_cubit.dart';
 import 'package:omar_ahmed_app/features/home/ui/views/home_view.dart';
 import 'package:omar_ahmed_app/features/local_auth/ui/views/local_auth_view.dart';
 import 'package:omar_ahmed_app/features/login/logic/login_cubit/login_cubit.dart';
@@ -62,7 +64,10 @@ class AppRouter {
         );
       case Routes.homeView:
         return MaterialPageRoute(
-          builder: (_) => const HomeView(),
+          builder: (_) => BlocProvider(
+            create: (context) => HomeCubit(getIt())..emitHomeStates(),
+            child: const HomeView(),
+          ),
         );
       default:
         return MaterialPageRoute(

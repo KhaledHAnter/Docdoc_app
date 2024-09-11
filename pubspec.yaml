@@ -49,6 +49,8 @@ dependencies:
   local_auth: ^2.3.0
   # for change app icon
   flutter_launcher_icons: ^0.13.1
+  # for caching network images
+  cached_network_image: ^3.4.1
 
 flutter_icons:
   android: true

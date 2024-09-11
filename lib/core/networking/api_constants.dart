@@ -2,6 +2,7 @@ class ApiConstants {
   static const String baseUrl = "https://vcare.integration25.com/api/";
   static const String loginEndpoint = "auth/login";
   static const String signupEndpoint = "auth/register";
+  static const String specialityEndpoint = "specialization/index";
 }
 
 class ApiErrors {

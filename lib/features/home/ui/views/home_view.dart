@@ -3,9 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:omar_ahmed_app/core/helpers/spacing.dart';
 import 'package:omar_ahmed_app/features/home/ui/views/doctor_speciality_header.dart';
 import 'package:omar_ahmed_app/features/home/ui/views/widgets/doctor_blue_banner.dart';
-import 'package:omar_ahmed_app/features/home/ui/views/widgets/doctor_speciality_list_view.dart';
 import 'package:omar_ahmed_app/features/home/ui/views/widgets/home_top_bar.dart';
-import 'package:omar_ahmed_app/features/home/ui/views/widgets/recommended_doctors_list_view.dart';
+import 'package:omar_ahmed_app/features/home/ui/views/widgets/specializations_and_doctors_bloc_builder.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -28,13 +27,7 @@ class HomeView extends StatelessWidget {
                 title: "Doctor Speciality",
               ),
               verticalSpace(16),
-              const DoctorSpecialityListView(),
-              verticalSpace(24),
-              const HomeSectionHeaders(
-                title: "Recommendation Doctor",
-              ),
-              verticalSpace(16),
-              const RecommendedDoctorsListView(),
+              const SpecializationsAndDoctorsBlocBuilder(),
             ],
           ),
         ),
