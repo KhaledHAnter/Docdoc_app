@@ -5,9 +5,9 @@ import 'package:omar_ahmed_app/core/helpers/spacing.dart';
 import 'package:omar_ahmed_app/core/theming/styles.dart';
 import 'package:omar_ahmed_app/features/home/data/models/speceialization_response_model.dart';
 
-class RecommendedDoctorsListViewItem extends StatelessWidget {
-  final Doctors doctor;
-  const RecommendedDoctorsListViewItem({super.key, required this.doctor});
+class DoctorsListViewItem extends StatelessWidget {
+  final Doctors? doctor;
+  const DoctorsListViewItem({super.key, required this.doctor});
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +22,12 @@ class RecommendedDoctorsListViewItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                doctor.name ?? 'Dr. XXXX XXXXX',
+                doctor!.name ?? 'Dr. XXXX XXXXX',
                 style: Styles.bold16,
               ),
               verticalSpace(4),
               Text(
-                "${doctor.price}  |  ${doctor.degree}",
+                "${doctor!.price}  |  ${doctor!.degree}",
                 style: Styles.medium13,
               ),
               verticalSpace(6),
