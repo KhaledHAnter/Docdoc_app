@@ -6,12 +6,10 @@ import 'package:omar_ahmed_app/core/helpers/spacing.dart';
 import 'package:omar_ahmed_app/core/theming/colors.dart';
 import 'package:omar_ahmed_app/features/home/logic/home_cubit.dart';
 import 'package:omar_ahmed_app/features/home/logic/home_state.dart';
-import 'package:omar_ahmed_app/features/home/ui/views/doctor_speciality_header.dart';
 import 'package:omar_ahmed_app/features/home/ui/views/widgets/doctor_speciality_list_view.dart';
-import 'package:omar_ahmed_app/features/home/ui/views/widgets/recommended_doctors_list_view.dart';
 
-class SpecializationsAndDoctorsBlocBuilder extends StatelessWidget {
-  const SpecializationsAndDoctorsBlocBuilder({super.key});
+class SpecializationsBlocBuilder extends StatelessWidget {
+  const SpecializationsBlocBuilder({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +21,8 @@ class SpecializationsAndDoctorsBlocBuilder extends StatelessWidget {
       builder: (context, state) {
         return state.maybeWhen(
           specializationLoading: () => setupLoading(),
-          specializationSuccess: (specializationsResponseModel) {
-            var specializationsList =
-                specializationsResponseModel.specializationDataList;
+          specializationSuccess: (specializationDataList) {
+            var specializationsList = specializationDataList;
             return setupSuccess(specializationsList);
           },
           specializationFailure: (errorHandler) => setupFailure(),
@@ -47,22 +44,20 @@ class SpecializationsAndDoctorsBlocBuilder extends StatelessWidget {
   }
 
   Widget setupSuccess(specializationsList) {
-    return Expanded(
-      child: Column(
-        children: <Widget>[
-          DoctorSpecialityListView(
-            specializationsDataList: specializationsList ?? [],
-          ),
-          verticalSpace(24),
-          const HomeSectionHeaders(
-            title: "Recommendation Doctor",
-          ),
-          verticalSpace(16),
-          RecommendedDoctorsListView(
-            doctorsList: specializationsList?[0].doctorsList ?? [],
-          ),
-        ],
-      ),
+    return Column(
+      children: <Widget>[
+        DoctorSpecialityListView(
+          specializationsDataList: specializationsList ?? [],
+        ),
+        verticalSpace(24),
+        // const HomeSectionHeaders(
+        //   title: "Recommendation Doctor",
+        // ),
+        // verticalSpace(16),
+        // RecommendedDoctorsListView(
+        //   doctorsList: specializationsList?[0].doctorsList ?? [],
+        // ),
+      ],
     );
   }
 
