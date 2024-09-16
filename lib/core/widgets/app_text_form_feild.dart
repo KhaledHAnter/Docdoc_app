@@ -83,6 +83,7 @@ class AppTextFormFeild extends StatelessWidget {
       readOnly: readOnly ?? false,
       obscureText: isObscureText,
       onTap: onTap,
+      textInputAction: TextInputAction.next,
       style: inputTextStyle ??
           Styles.medium14.copyWith(color: ColorsManager.darkBlue),
     );

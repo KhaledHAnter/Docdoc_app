@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:omar_ahmed_app/core/helpers/constants.dart';
 import 'package:omar_ahmed_app/core/helpers/extentions.dart';
 import 'package:omar_ahmed_app/core/helpers/local_auth_utils.dart';
 import 'package:omar_ahmed_app/core/routing/routes.dart';
@@ -9,6 +10,7 @@ import 'package:omar_ahmed_app/core/theming/styles.dart';
 import 'package:omar_ahmed_app/core/widgets/app_button.dart';
 import 'package:omar_ahmed_app/features/onboarding/ui/widgets/doc_logo_and_name.dart';
 import 'package:omar_ahmed_app/features/onboarding/ui/widgets/doctor_image_and_text.dart';
+import 'package:omar_ahmed_app/main_development.dart';
 
 class OnboardingView extends StatefulWidget {
   const OnboardingView({super.key});
@@ -25,19 +27,31 @@ class _OnboardingViewState extends State<OnboardingView> {
   void initState() {
     super.initState();
     auth = LocalAuthUtils();
+
     _checkBiometrics();
   }
 
   Future<void> _checkBiometrics() async {
     bool canCheck = await auth.canCheckBiometrics();
-    setState(() {
-      _canCheckBiometrics = canCheck;
-    });
+    await checkIfLoggedUser();
+    if (isLoggedUser) {
+      setState(() {
+        _canCheckBiometrics = canCheck;
+      });
+    } else {
+      setState(() {
+        _canCheckBiometrics = false;
+      });
+    }
   }
 
   Future<void> _authenticate() async {
-    bool authenticated = await auth.authenticate();
-    navigateOptions(authenticated);
+    if (isLoggedUser) {
+      bool authenticated = await auth.authenticate();
+      navigateOptions(authenticated);
+    } else {
+      context.pushReplacementNamed(Routes.loginView);
+    }
   }
 
   void navigateOptions(bool authenticated) {
@@ -76,10 +90,10 @@ class _OnboardingViewState extends State<OnboardingView> {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 32.w),
                       child: AppButton(
-                        title: _canCheckBiometrics
+                        title: isLoggedUser
                             ? Platform.isIOS
-                                ? 'Log in with Face ID'
-                                : "log in with Finger Print"
+                                ? 'Login with Face ID'
+                                : "login with FingerPrint"
                             : 'Get Started',
                         onTap: () {
                           _authenticate();
