@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:omar_ahmed_app/core/helpers/validator_utils/app_regex.dart';
 import 'package:omar_ahmed_app/core/helpers/spacing.dart';
 import 'package:omar_ahmed_app/core/helpers/validator_utils/validator_utils.dart';
@@ -83,7 +84,8 @@ class _SignupFormState extends State<SignupForm> {
                 });
               },
               child: Icon(
-                isPasswordObscureText ? Icons.visibility_off : Icons.visibility,
+                isPasswordObscureText ? Icons.visibility : Icons.visibility_off,
+                size: 20.h,
               ),
             ),
             validator: ValidatorUtils.validateHighSecurityPassword,
@@ -103,8 +105,9 @@ class _SignupFormState extends State<SignupForm> {
               },
               child: Icon(
                 isPasswordConfirmationObscureText
-                    ? Icons.visibility_off
-                    : Icons.visibility,
+                    ? Icons.visibility
+                    : Icons.visibility_off,
+                size: 20.h,
               ),
             ),
             validator: (value) {
