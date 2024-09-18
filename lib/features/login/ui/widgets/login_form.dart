@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:omar_ahmed_app/core/helpers/spacing.dart';
 import 'package:omar_ahmed_app/core/helpers/validator_utils/validator_utils.dart';
 import 'package:omar_ahmed_app/core/widgets/app_text_form_feild.dart';
@@ -44,6 +45,7 @@ class _LoginFormState extends State<LoginForm> {
               },
               child: Icon(
                 isObscure ? Icons.visibility : Icons.visibility_off,
+                size: 20.h,
               ),
             ),
           ),

@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:omar_ahmed_app/core/helpers/extentions.dart';
+
 part 'api_error_model.g.dart';
 
 @JsonSerializable()
@@ -7,7 +7,7 @@ class ApiErrorModel {
   final String? message;
   final int? code;
   @JsonKey(name: 'data')
-  Map<String, dynamic>? errors;
+  dynamic errors;
 
   ApiErrorModel({
     this.message,
@@ -21,13 +21,15 @@ class ApiErrorModel {
 
   /// returns a string with all error messages
   String getAllErrorMessages() {
-    if (errors.isNullOrEmpty()) return message ?? 'Unknown error occurred';
+    if (errors == null || errors!.isEmpty) {
+      return message ?? 'Unknown error occurred';
+    } else {
+      final errorMessages = errors!.entries.map((entriy) {
+        final value = entriy.value;
+        return "${value.join(', ')}";
+      }).join('\n');
 
-    final errorMessages = errors!.entries.map((entriy) {
-      final value = entriy.value;
-      return "${value.join(', ')}";
-    }).join('\n');
-
-    return errorMessages;
+      return errorMessages;
+    }
   }
 }
