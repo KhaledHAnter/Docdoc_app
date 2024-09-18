@@ -90,7 +90,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 32.w),
                       child: AppButton(
-                        title: isLoggedUser
+                        title: _canCheckBiometrics
                             ? Platform.isIOS
                                 ? 'Login with Face ID'
                                 : "login with FingerPrint"

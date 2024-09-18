@@ -35,8 +35,8 @@ class SignupCubit extends Cubit<SignupState> {
     response.when(success: (signupResponse) async {
       await saveUserToken(signupResponse.userData!.token ?? '');
       emit(SignupState.signupSuccess(signupResponse));
-    }, error: (error) {
-      emit(SignupState.signupError(error: error.apiErrorModel.message ?? ''));
+    }, error: (apiErrorModel) {
+      emit(SignupState.signupError(apiErrorModel));
     });
   }
 
