@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:omar_ahmed_app/core/helpers/extentions.dart';
+import 'package:omar_ahmed_app/core/networking/api_error_model.dart';
 import 'package:omar_ahmed_app/core/routing/routes.dart';
 import 'package:omar_ahmed_app/core/theming/colors.dart';
 import 'package:omar_ahmed_app/core/theming/styles.dart';
@@ -16,10 +17,12 @@ class LoginBlocListner extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<LoginCubit, LoginState>(
       listenWhen: (previous, current) =>
-          current is Loading || current is Error || current is Success,
+          current is LoginLoading ||
+          current is LoginError ||
+          current is LoginSuccess,
       listener: (context, state) {
         state.whenOrNull(
-          loading: () {
+          loginLoading: () {
             showDialog(
               context: context,
               builder: (context) => Center(
@@ -28,13 +31,13 @@ class LoginBlocListner extends StatelessWidget {
               ),
             );
           },
-          success: (loginResponse) {
+          loginSuccess: (loginResponse) {
             context.pop();
             context.pushNamedAndRemoveUntil(Routes.homeView,
                 predicate: (context) => false);
           },
-          error: (error) {
-            setupErrorState(context, error);
+          LoginError: (apiErrorModel) {
+            setupErrorState(context, apiErrorModel);
           },
         );
       },
@@ -42,7 +45,7 @@ class LoginBlocListner extends StatelessWidget {
     );
   }
 
-  void setupErrorState(BuildContext context, String error) {
+  void setupErrorState(BuildContext context, ApiErrorModel apiErrorModel) {
     context.pop();
     showDialog(
       context: context,
@@ -53,7 +56,7 @@ class LoginBlocListner extends StatelessWidget {
           color: Colors.red,
         ),
         content: Text(
-          error,
+          apiErrorModel.getAllErrorMessages(),
           style: Styles.medium15,
         ),
         actions: [
